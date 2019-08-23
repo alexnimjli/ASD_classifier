@@ -90,6 +90,8 @@ df.columns
 
 plot_bar_graphs(df, 'Sex', 'Class/ASD Traits ')
 
+plot_bar_graphs(df, 'Family_mem_with_ASD', 'Class/ASD Traits ')
+
 plot_bar_graphs(df, 'Ethnicity', 'Class/ASD Traits ')
 
 # +
