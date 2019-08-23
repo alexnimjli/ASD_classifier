@@ -92,4 +92,67 @@ plot_bar_graphs(df, 'Sex', 'Class/ASD Traits ')
 
 plot_bar_graphs(df, 'Ethnicity', 'Class/ASD Traits ')
 
+# +
+dodger_blue = '#1E90FF'
+crimson = '#DC143C'
+lime_green = '#32CD32'
+red_wine = '#722f37'
+white_wine = '#dbdd46' 
+
+def plot_histograms(df, x_attribute, n_bins, x_max, y_attribute):
+    
+    #this removes the rows with nan values for this attribute  
+    df = df.dropna(subset=[x_attribute]) 
+    
+    print ("Mean: {:0.2f}".format(df[x_attribute].mean()))
+    print ("Median: {:0.2f}".format(df[x_attribute].median()))
+           
+    df[x_attribute].hist(bins= n_bins, color= crimson)
+    
+    #this plots the mean and median 
+    plt.plot([df[x_attribute].mean(), df[x_attribute].mean()], [0, 100],
+        color='black', linestyle='-', linewidth=2, label='mean')
+    plt.plot([df[x_attribute].median(), df[x_attribute].median()], [0, 100],
+        color='black', linestyle='--', linewidth=2, label='median')
+    
+    plt.xlim(xmin=0, xmax = x_max)
+    plt.xlabel(x_attribute)
+    plt.ylabel('COUNT')
+    plt.title(x_attribute)
+    plt.legend(loc='best')
+    plt.show()
+    
+    for i in ['Yes', 'No']:
+        print ("{} Mean: {:0.2f}".format(i, df[df[y_attribute]==i][x_attribute].mean()))
+        print ("{} Median: {:0.2f}".format(i, df[df[ y_attribute]==i][x_attribute].median()))
+    
+    for i, j in zip(['Yes', 'No'], ['r', 'b']):
+        df[df[y_attribute]==i][x_attribute].hist(bins=n_bins, color =j, label=i)
+    
+    
+    for i, j in zip(list(df[y_attribute].unique()), ['g', 'y']):
+        plt.plot([df[df[y_attribute]==i][x_attribute].mean(), df[df[y_attribute]==i][x_attribute].mean()], 
+            [0, 50], color=j, linestyle='-', linewidth=2, label='mean') 
+        plt.plot([df[df[y_attribute]==i][x_attribute].median(), df[df[y_attribute]==i][x_attribute].median()], 
+            [0, 50], color=j, linestyle='--', linewidth=2, label='median') 
+ 
+    plt.xlim(xmin=0, xmax = x_max)
+    
+    plt.title(x_attribute)
+    plt.xlabel(x_attribute)
+    plt.ylabel('COUNT')
+    plt.legend(loc='best')
+    plt.show()    
+    return
+    
+
+
+# -
+
+plot_histograms(df, 'Age_Mons', 10, 40, 'Class/ASD Traits ')
+
+
+
+plot_histograms(df, 'Qchat-10-Score', 10, 10, 'Class/ASD Traits ')
+
 
