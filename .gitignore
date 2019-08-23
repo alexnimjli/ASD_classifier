@@ -1,0 +1,5 @@
+.git/
+.ipynb_checkpoints/
+*.csv
+*.ipynb
+.DS_Store
