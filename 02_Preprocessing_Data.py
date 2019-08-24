@@ -142,6 +142,12 @@ simple_box_plot(df, 'Qchat-10-Score', 'Class/ASD Traits ')
 
 # # These look okay to me
 
+df['Class/ASD Traits '].head()
+
+df['Class/ASD Traits '] = (df['Class/ASD Traits '] == 'No').astype(int)
+
+df['Class/ASD Traits '].head()
+
 # +
 from sklearn.model_selection import train_test_split
 
@@ -223,5 +229,7 @@ X_test_processed = pd.DataFrame(X_test_processed)
 
 X_train_processed.to_csv(r'X_train_processed.csv')
 X_test_processed.to_csv(r'X_test_processed.csv')
+
+
 
 
