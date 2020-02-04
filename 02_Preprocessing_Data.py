@@ -7,7 +7,7 @@
 #       extension: .py
 #       format_name: light
 #       format_version: '1.4'
-#       jupytext_version: 1.1.7
+#       jupytext_version: 1.2.4
 #   kernelspec:
 #     display_name: Python 3
 #     language: python
@@ -72,6 +72,8 @@ def missing_values_table(df):
         # Return the dataframe with missing information
         return mis_val_table_ren_columns
 
+
+100 * df.isnull().sum() / len(df)
 
 missing_values_table(df)
 
